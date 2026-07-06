@@ -1,0 +1,105 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "prompt",
+ "creation": "2026-05-26 10:07:40.224074",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "settings_section",
+  "modules",
+  "enabled",
+  "mod",
+  "column_break_rxau",
+  "description",
+  "section_break_lhzu",
+  "code"
+ ],
+ "fields": [
+  {
+   "fieldname": "settings_section",
+   "fieldtype": "Section Break",
+   "label": "Settings"
+  },
+  {
+   "fieldname": "modules",
+   "fieldtype": "Table MultiSelect",
+   "label": "Module's",
+   "options": "Module Multiselect"
+  },
+  {
+   "fieldname": "column_break_rxau",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled"
+  },
+  {
+   "fieldname": "mod",
+   "fieldtype": "Small Text",
+   "hidden": 1,
+   "in_list_view": 1,
+   "label": "Mod",
+   "read_only": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Description"
+  },
+  {
+   "fieldname": "section_break_lhzu",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "code",
+   "fieldtype": "Code",
+   "label": "Code",
+   "options": "JS"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-05-31 21:05:40.362345",
+ "modified_by": "Administrator",
+ "module": "Erpnext Dbsync",
+ "name": "JS Library",
+ "naming_rule": "Set by user",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Administrator",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
