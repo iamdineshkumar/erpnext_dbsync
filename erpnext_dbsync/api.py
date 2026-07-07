@@ -88,7 +88,7 @@ def start_migration(files):
         if not os.path.exists(folder_path):
             os.makedirs(folder_path)
         
-        fixtures_dir = frappe.get_app_path(app_name, "fixtures")
+        fixtures_dir = frappe.get_app_path("erpnext_dbsync", "fixtures")
         if not os.path.exists(fixtures_dir):
             os.mkdir(fixtures_dir)
 
