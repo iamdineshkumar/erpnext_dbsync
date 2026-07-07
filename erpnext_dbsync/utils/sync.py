@@ -97,41 +97,46 @@ def generate_files_and_sync(doc):
     doctype_name = data_migration_doc.get("doc")
     commit_msg = data_migration_doc.get("commit_msg", "Sync changes from ERPNext DBSync")
     files_paths = []
+    data_migration_instance = frappe.get_doc("Data Migration", doctype_name)
 
     if cint(frappe.db.get_single_value("Data Migration Settings", "enable_new_doctype_migration")):
-        new_doctypes = get_new_doctype_modules(doctype_name)
-        for doctype in new_doctypes:
-            files_paths.extend(get_doctype_source_paths(doctype))
         
-        if files_paths:
-            _git(branch=branch, commit_msg=commit_msg, on_queue=on_queue, Files=files_paths)
-        
+        if data_migration_instance.new_doctype_list:     
+            new_doctypes = get_new_doctype_modules(doctype_name)
+            for doctype in new_doctypes:
+                files_paths.extend(get_doctype_source_paths(doctype))
+            
+            if files_paths:
+                _git(branch=branch, commit_msg=commit_msg, on_queue=on_queue, Files=files_paths)
+            
     
     if cint(frappe.db.get_single_value("Data Migration Settings", "enable_doctype_field_migration")):
         
         if not cint(frappe.db.get_single_value("Data Migration Settings", "enable_firebase_version_control")):
             frappe.throw(_("Please enable firebase version control to use doctype field migration."))
-            
-        doctype_list = get_field_doctype_modules(doctype_name)
         
-        for doc_data in doctype_list:
-            custom_export_customizations(
-                module="Erpnext Dbsync",
-                doctype=doc_data.get('module'),
-                comment=doc_data.get('comments', ""),
-                sync_on_migrate=True,
-                with_permissions=False
-            )
+        if data_migration_instance.field_migartion_doctype:
+            doctype_list = get_field_doctype_modules(doctype_name)
+            
+            for doc_data in doctype_list:
+                custom_export_customizations(
+                    module="Erpnext Dbsync",
+                    doctype=doc_data.get('module'),
+                    comment=doc_data.get('comments', ""),
+                    sync_on_migrate=True,
+                    with_permissions=False
+                )
     
     if cint(frappe.db.get_single_value("Data Migration Settings", "enable_doctype_data_migration")):
-        frappe.enqueue(
-            method="erpnext_dbsync.utils.sync.execute_doctype_data_migration",
-            queue="long",
-            timeout=600,
-            is_async=True,
-            doctype_name=doctype_name,
-            app=app
-        )
+        if  data_migration_instance.doctype_data_migration:
+            frappe.enqueue(
+                method="erpnext_dbsync.utils.sync.execute_doctype_data_migration",
+                queue="long",
+                timeout=600,
+                is_async=True,
+                doctype_name=doctype_name,
+                app=app
+            )
         # execute_doctype_data_migration(doctype_name, app)
         
 
