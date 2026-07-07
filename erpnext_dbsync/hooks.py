@@ -97,8 +97,7 @@ SYSTEM_FIELDS = {
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
 
-# app_include_js =[ "/assets/erpnext_dbsync/js/data_migration.js",
-#                   ]
+app_include_js =[ "/assets/erpnext_dbsync/js/data_migration.js"]
 
 # Svg Icons
 # ------------------

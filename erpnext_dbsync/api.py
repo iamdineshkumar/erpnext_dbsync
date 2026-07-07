@@ -74,9 +74,12 @@ def get_deploy_documents():
         frappe.log_error(frappe.get_traceback(), "Get All Documents")
         raise e
 
-import os
-from frappe.modules import get_module_path, scrub
-from .hooks import app_name
+
+import frappe
+import shutil, os
+from pathlib import Path
+from frappe.modules import get_module_path
+from frappe import _
 
 @frappe.whitelist(methods=["POST"])
 def start_migration(files):
@@ -85,13 +88,16 @@ def start_migration(files):
         files_list = frappe.parse_json(files)
         
         folder_path = os.path.join(get_module_path(module), "custom")
-        if not os.path.exists(folder_path):
-            os.makedirs(folder_path)
-        
         fixtures_dir = frappe.get_app_path("erpnext_dbsync", "fixtures")
-        if not os.path.exists(fixtures_dir):
-            os.mkdir(fixtures_dir)
-
+        
+        if os.path.exists(folder_path):
+            shutil.rmtree(folder_path)
+        os.makedirs(folder_path)
+        
+        if os.path.exists(fixtures_dir):
+            shutil.rmtree(fixtures_dir)
+        os.makedirs(fixtures_dir)
+        
         for file in files_list:
             original_file_id = file.get("id")  
             migration_type = file.get("type")
