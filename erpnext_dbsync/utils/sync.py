@@ -93,15 +93,17 @@ def generate_files_and_sync(doc):
     
     app = "erpnext_dbsync"
     branch = data_migration_doc.get("branch", None)
+    is_git = data_migration_doc.get("is_git", 0)
+    doctype_doc = data_migration_doc.get("doctype_doc", "Data Migration")
     on_queue = data_migration_doc.get("on_queue", 0)
     doctype_name = data_migration_doc.get("doc")
     commit_msg = data_migration_doc.get("commit_msg", "Sync changes from ERPNext DBSync")
     files_paths = []
-    data_migration_instance = frappe.get_doc("Data Migration", doctype_name)
+    data_migration_instance = frappe.get_doc(doctype_doc, doctype_name)
 
     if cint(frappe.db.get_single_value("Data Migration Settings", "enable_new_doctype_migration")):
         
-        if data_migration_instance.new_doctype_list:     
+        if cint(is_git):     
             new_doctypes = get_new_doctype_modules(doctype_name)
             for doctype in new_doctypes:
                 files_paths.extend(get_doctype_source_paths(doctype))
