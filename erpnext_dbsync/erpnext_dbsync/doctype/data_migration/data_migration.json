@@ -5,8 +5,6 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "new_doctype_migration_section",
-  "new_doctype_list",
   "field_migration_tab_section",
   "field_migartion_doctype",
   "doctype_data_migration_tab",
@@ -56,18 +54,6 @@
    "read_only": 1
   },
   {
-   "fieldname": "new_doctype_migration_section",
-   "fieldtype": "Section Break",
-   "label": "New Doctype Migration"
-  },
-  {
-   "description": "Note : Migration Doctype modules must be part of the ERPNext DBSync module.",
-   "fieldname": "new_doctype_list",
-   "fieldtype": "Table MultiSelect",
-   "label": "New OR Modified Doctype List",
-   "options": "Module Multiselect"
-  },
-  {
    "fieldname": "field_migration_tab_section",
    "fieldtype": "Section Break",
    "label": "Field Migration Tab"
@@ -83,7 +69,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-07-03 14:11:24.122909",
+ "modified": "2026-07-08 10:51:51.265867",
  "modified_by": "Administrator",
  "module": "Erpnext Dbsync",
  "name": "Data Migration",

@@ -99,6 +99,14 @@ SYSTEM_FIELDS = {
 
 app_include_js =[ "/assets/erpnext_dbsync/js/data_migration.js"]
 
+def custom_patch():
+    from frappe.modules import utils
+    from erpnext_dbsync.setup.custom_frappe.migration import custom_sync_customizations_for_doctype
+    
+    utils.sync_customizations_for_doctype = custom_sync_customizations_for_doctype
+    
+custom_patch()
+
 # Svg Icons
 # ------------------
 # include app icons in desk

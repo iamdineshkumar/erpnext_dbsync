@@ -1,0 +1,81 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "NDM-.YYYY.-.MM.-.DD.-.####",
+ "creation": "2026-07-08 10:13:02.893392",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_ij3b",
+  "new_doctype_list",
+  "section_break_pujs",
+  "amended_from",
+  "is_sync_github"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_ij3b",
+   "fieldtype": "Section Break",
+   "label": "New Doctype Migration"
+  },
+  {
+   "description": "Note : Migration Doctype modules must be part of the ERPNext DBSync module.",
+   "fieldname": "new_doctype_list",
+   "fieldtype": "Table MultiSelect",
+   "label": "New OR Modified Doctype List",
+   "options": "Module Multiselect"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "New Doctype Migration",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "section_break_pujs",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_sync_github",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Is Sync Github",
+   "read_only": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-07-08 10:48:26.692152",
+ "modified_by": "Administrator",
+ "module": "Erpnext Dbsync",
+ "name": "New Doctype Migration",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
