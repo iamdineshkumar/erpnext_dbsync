@@ -6,7 +6,7 @@ function open_dm_dialog(fetch_method, action_method, action_type) {
         title: dialog_title,
         size: "extra-large",
         fields: [
-            { fieldname: "deploy_status_filter", fieldtype: "Select", label: "Deploy Status", options: "\nDraft\nPending\nComplete", default: action_type === "approve" ? __("Draft") : __("Pending"), },
+            { fieldname: "deploy_status_filter", fieldtype: "Select", label: "Deploy Status", options: "\nDraft\nPending\nComplete", default: action_type === "approve" ? __("Draft") : __("Pending") },
             { fieldtype: "Column Break" },
             { fieldname: "type_filter", fieldtype: "Select", label: "Type", options: "\nField Migration\nData Migration", default: "" },
             { fieldtype: "Column Break" },
