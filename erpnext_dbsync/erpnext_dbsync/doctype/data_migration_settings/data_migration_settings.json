@@ -11,6 +11,7 @@
   "enable_doctype_field_migration",
   "column_break_gjmk",
   "enable_github_version_control",
+  "is_public_repo",
   "github_repository_url",
   "branch",
   "user_name",
@@ -109,13 +110,20 @@
    "fieldname": "enable_migration_downloader",
    "fieldtype": "Check",
    "label": "Enable Migration Downloader"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.enable_github_version_control===1;",
+   "fieldname": "is_public_repo",
+   "fieldtype": "Check",
+   "label": "Is Public Repo"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2026-07-06 09:59:33.277899",
+ "modified": "2026-07-10 10:32:45.480213",
  "modified_by": "Administrator",
  "module": "Erpnext Dbsync",
  "name": "Data Migration Settings",

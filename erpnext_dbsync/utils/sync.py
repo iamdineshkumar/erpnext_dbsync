@@ -13,6 +13,7 @@ from ..utils.firebase import FireBaseConnect
 class GitSync:
     def __init__(self):
         settings = frappe.get_cached_doc("Data Migration Settings")
+        self.is_public_repo = settings.is_public_repo
         self.repo_url = settings.github_repository_url
         self.branch_name = settings.branch
         self.username = settings.user_name
@@ -41,8 +42,12 @@ class GitSync:
             
             if not instance.username or not instance.token:
                 frappe.throw(_("Missing Git credentials in Data Migration Settings."))
-
-            auth_url = instance.repo_url.replace("https://", f"https://{instance.username}:{instance.token}@")
+            
+            auth_url = instance.repo_url
+            
+            if not instance.is_public_repo:
+                 auth_url = instance.repo_url.replace("https://", f"https://{instance.username}:{instance.token}@")
+            
             repo.git.push(auth_url, branch or instance.branch_name)
         
         except Exception as e:
@@ -78,7 +83,7 @@ def _git(branch=None, commit_msg=None, on_queue=False, Files=None):
                 is_async=True,
                 files=modified_files,
                 commit_message=commit_msg,
-                branch=branch
+                branch=branch,
             )
         else:
             GitSync.sync(modified_files, commit_message=commit_msg, branch=branch)
@@ -105,12 +110,20 @@ def generate_files_and_sync(doc):
         
         if cint(is_git):     
             new_doctypes = get_new_doctype_modules(doctype_name)
+            remove_doctype = data_migration_instance.delete_doctype_list
             for doctype in new_doctypes:
                 files_paths.extend(get_doctype_source_paths(doctype))
-            
+
+            if remove_doctype:
+                remove_doctype = remove_doctype.split(",")
+                for doctype in remove_doctype:
+                    files_paths.extend(get_deleted_doctype_path(doctype))
+            print("============================")
+            print(files_paths)
             if files_paths:
                 _git(branch=branch, commit_msg=commit_msg, on_queue=on_queue, Files=files_paths)
             
+            return
     
     if cint(frappe.db.get_single_value("Data Migration Settings", "enable_doctype_field_migration")):
         
@@ -252,3 +265,19 @@ def get_doctype_source_paths(doctype_name: str) -> list:
             ])
                 
     return file_paths
+
+
+def get_deleted_doctype_path(doctype_name):
+    app_path = Path(frappe.get_app_path("erpnext_dbsync"))
+
+    doctype_folder = frappe.scrub(doctype_name)
+
+    for path in app_path.rglob("*"):
+        if (
+            path.is_dir()
+            and path.name == doctype_folder
+            and "doctype" in path.parts
+        ):
+            return str(path)
+
+    return None

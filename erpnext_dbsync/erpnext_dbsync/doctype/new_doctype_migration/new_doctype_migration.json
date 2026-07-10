@@ -8,6 +8,8 @@
  "field_order": [
   "section_break_ij3b",
   "new_doctype_list",
+  "column_break_btlq",
+  "delete_doctype_list",
   "section_break_pujs",
   "amended_from",
   "is_sync_github"
@@ -40,19 +42,30 @@
    "fieldtype": "Section Break"
   },
   {
+   "allow_on_submit": 1,
    "default": "0",
    "fieldname": "is_sync_github",
    "fieldtype": "Check",
    "hidden": 1,
    "label": "Is Sync Github",
    "read_only": 1
+  },
+  {
+   "fieldname": "column_break_btlq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Enter doctypes to remove (comma-separated)",
+   "fieldname": "delete_doctype_list",
+   "fieldtype": "Small Text",
+   "label": "Delete Doctype List"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-07-08 10:48:26.692152",
+ "modified": "2026-07-10 10:42:43.167586",
  "modified_by": "Administrator",
  "module": "Erpnext Dbsync",
  "name": "New Doctype Migration",
