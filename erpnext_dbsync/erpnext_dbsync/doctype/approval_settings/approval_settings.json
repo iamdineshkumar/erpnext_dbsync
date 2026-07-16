@@ -1,0 +1,138 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "Format:{applicable_for}",
+ "creation": "2026-06-12 12:17:39.724085",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "applicable_for",
+  "manager_level",
+  "column_break_uhbu",
+  "enable",
+  "verification_department",
+  "approver_section",
+  "approver_list",
+  "verification_group_section",
+  "verifier",
+  "notifications_section",
+  "approval_notification",
+  "notification_for_final_approver",
+  "column_break_djbs",
+  "enable_notification_on_level",
+  "notification_after_post_verification"
+ ],
+ "fields": [
+  {
+   "fieldname": "applicable_for",
+   "fieldtype": "Link",
+   "label": "Applicable for",
+   "options": "DocType"
+  },
+  {
+   "default": "0",
+   "fieldname": "manager_level",
+   "fieldtype": "Check",
+   "label": "Manager Level"
+  },
+  {
+   "fieldname": "column_break_uhbu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable",
+   "fieldtype": "Check",
+   "label": "Enable"
+  },
+  {
+   "fieldname": "verification_department",
+   "fieldtype": "Select",
+   "label": "Verification Department ",
+   "options": "\ndepartment\nitems.department"
+  },
+  {
+   "fieldname": "approver_section",
+   "fieldtype": "Section Break",
+   "label": "Approver"
+  },
+  {
+   "fieldname": "approver_list",
+   "fieldtype": "Table",
+   "label": "Approver List",
+   "options": "Approver"
+  },
+  {
+   "fieldname": "verification_group_section",
+   "fieldtype": "Section Break",
+   "label": "Verification Group"
+  },
+  {
+   "fieldname": "verifier",
+   "fieldtype": "Link",
+   "label": "Verifier",
+   "options": "Role Profile"
+  },
+  {
+   "fieldname": "notifications_section",
+   "fieldtype": "Section Break",
+   "label": "Notifications"
+  },
+  {
+   "default": "0",
+   "fieldname": "approval_notification",
+   "fieldtype": "Check",
+   "label": "Approval notification"
+  },
+  {
+   "default": "0",
+   "fieldname": "notification_for_final_approver",
+   "fieldtype": "Check",
+   "label": "Notification for final approver"
+  },
+  {
+   "fieldname": "column_break_djbs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_notification_on_level",
+   "fieldtype": "Check",
+   "label": "Enable notification on level"
+  },
+  {
+   "default": "0",
+   "fieldname": "notification_after_post_verification",
+   "fieldtype": "Check",
+   "label": "Notification after post verification"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-07-10 13:32:47.945026",
+ "modified_by": "Administrator",
+ "module": "Erpnext Dbsync",
+ "name": "Approval Settings",
+ "naming_rule": "Expression",
+ "owner": "mounika@elbrit.org",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

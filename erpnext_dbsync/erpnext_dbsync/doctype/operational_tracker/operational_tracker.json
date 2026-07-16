@@ -1,0 +1,175 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "Format:{reference_doctype}-{reference}",
+ "creation": "2026-06-12 12:59:40.848603",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "reference_doctype",
+  "reference",
+  "setting",
+  "user",
+  "verifier",
+  "data",
+  "conditions",
+  "column_break_yrwk",
+  "role_profile",
+  "department",
+  "hq",
+  "next_approver",
+  "next_role",
+  "status",
+  "attachment",
+  "final_approver",
+  "todo",
+  "reason_for_rejection",
+  "section_break_buhr",
+  "approver_list"
+ ],
+ "fields": [
+  {
+   "fieldname": "reference_doctype",
+   "fieldtype": "Link",
+   "label": "Reference Doctype",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "reference",
+   "fieldtype": "Dynamic Link",
+   "label": "Reference",
+   "options": "reference_doctype"
+  },
+  {
+   "fieldname": "setting",
+   "fieldtype": "Link",
+   "label": "Setting",
+   "options": "Approval Settings"
+  },
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "label": "User",
+   "options": "User"
+  },
+  {
+   "fieldname": "verifier",
+   "fieldtype": "Link",
+   "label": "Verifier",
+   "options": "Role Profile"
+  },
+  {
+   "fieldname": "data",
+   "fieldtype": "Currency",
+   "label": "Data"
+  },
+  {
+   "fieldname": "conditions",
+   "fieldtype": "Code",
+   "label": "Conditions"
+  },
+  {
+   "fieldname": "column_break_yrwk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "role_profile",
+   "fieldtype": "Link",
+   "label": "Role Profile",
+   "options": "Role Profile"
+  },
+  {
+   "fetch_from": "role_profile.custom_department",
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "label": "Department",
+   "options": "Department"
+  },
+  {
+   "fetch_from": "role_profile.custom_territory",
+   "fieldname": "hq",
+   "fieldtype": "Link",
+   "label": "HQ",
+   "options": "Territory"
+  },
+  {
+   "fieldname": "next_approver",
+   "fieldtype": "Link",
+   "label": "Next Approver",
+   "options": "User"
+  },
+  {
+   "fieldname": "next_role",
+   "fieldtype": "Link",
+   "label": "Next Role",
+   "options": "Role"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Link",
+   "label": "Status",
+   "options": "Approval Status"
+  },
+  {
+   "fieldname": "attachment",
+   "fieldtype": "Attach",
+   "label": "Attachment"
+  },
+  {
+   "fieldname": "final_approver",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "final approver",
+   "options": "Role"
+  },
+  {
+   "fieldname": "todo",
+   "fieldtype": "Link",
+   "label": "ToDO",
+   "options": "ToDo"
+  },
+  {
+   "fieldname": "reason_for_rejection",
+   "fieldtype": "Text",
+   "label": "Reason for Rejection"
+  },
+  {
+   "fieldname": "section_break_buhr",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "approver_list",
+   "fieldtype": "HTML",
+   "label": "Approver List"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-07-10 13:31:59.086123",
+ "modified_by": "Administrator",
+ "module": "Erpnext Dbsync",
+ "name": "Operational Tracker",
+ "naming_rule": "Expression",
+ "owner": "mounika@elbrit.org",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

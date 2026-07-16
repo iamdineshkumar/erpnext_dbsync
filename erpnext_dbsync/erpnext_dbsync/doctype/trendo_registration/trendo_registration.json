@@ -1,0 +1,187 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{form_type}-{#####}",
+ "creation": "2026-06-15 17:05:57.487198",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "form_type",
+  "specialization",
+  "hospital__clinic",
+  "clinical_interests",
+  "requests",
+  "column_break_xfrp",
+  "full_name",
+  "specialization_other",
+  "city",
+  "clinical_interest_other",
+  "attend_trendo_2026",
+  "role",
+  "reason",
+  "column_break_hlhy",
+  "title",
+  "professional_email",
+  "mobile_number",
+  "products_of_interest",
+  "consent",
+  "email",
+  "date"
+ ],
+ "fields": [
+  {
+   "fieldname": "form_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Form Type",
+   "options": "\nDoctor\nGeneral Inquiry",
+   "reqd": 1
+  },
+  {
+   "fieldname": "specialization",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Specialization"
+  },
+  {
+   "fieldname": "hospital__clinic",
+   "fieldtype": "Data",
+   "label": "Hospital / Clinic"
+  },
+  {
+   "fieldname": "clinical_interests",
+   "fieldtype": "Small Text",
+   "label": "Clinical Interests"
+  },
+  {
+   "fieldname": "requests",
+   "fieldtype": "Small Text",
+   "label": "Requests"
+  },
+  {
+   "fieldname": "column_break_xfrp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "label": "Full Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "specialization_other",
+   "fieldtype": "Data",
+   "label": "Specialization Other"
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "in_standard_filter": 1,
+   "label": "City",
+   "reqd": 1
+  },
+  {
+   "fieldname": "clinical_interest_other",
+   "fieldtype": "Data",
+   "label": "\tClinical Interest Other"
+  },
+  {
+   "fieldname": "attend_trendo_2026",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "\tAttend TRENDO 2026",
+   "options": "\nYes\nNo\nUndecided"
+  },
+  {
+   "fieldname": "role",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Role",
+   "options": "\nPatient\nCaregiver / Family Member\nPharmacy / Chemist\nMedical Student\nMedical Representative\nDistributor / Stockist Inquiry\nCareer Inquiry\nJournalist / Media\nOther"
+  },
+  {
+   "fieldname": "reason",
+   "fieldtype": "Long Text",
+   "label": "Reason"
+  },
+  {
+   "fieldname": "column_break_hlhy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Select",
+   "label": "Title",
+   "options": "\nDr.\nProf.\nOther"
+  },
+  {
+   "fieldname": "professional_email",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "label": "Professional Email",
+   "options": "Email",
+   "reqd": 1
+  },
+  {
+   "fieldname": "mobile_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "\tMobile Number",
+   "options": "Phone",
+   "reqd": 1
+  },
+  {
+   "fieldname": "products_of_interest",
+   "fieldtype": "Small Text",
+   "label": "Products of Interest"
+  },
+  {
+   "default": "0",
+   "fieldname": "consent",
+   "fieldtype": "Check",
+   "label": "\tConsent"
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email",
+   "options": "Email"
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-07-16 16:53:57.941427",
+ "modified_by": "Administrator",
+ "module": "Erpnext Dbsync",
+ "name": "Trendo Registration",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

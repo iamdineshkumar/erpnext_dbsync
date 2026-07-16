@@ -1,0 +1,53 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-06-12 12:20:17.580444",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "role",
+  "status",
+  "conditions_for_final_approver",
+  "conditions_for_update_final_approver"
+ ],
+ "fields": [
+  {
+   "fieldname": "role",
+   "fieldtype": "Link",
+   "label": "role",
+   "options": "Role"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Link",
+   "label": "Status",
+   "options": "Approval Status"
+  },
+  {
+   "fieldname": "conditions_for_final_approver",
+   "fieldtype": "Code",
+   "label": "Conditions for final approver"
+  },
+  {
+   "fieldname": "conditions_for_update_final_approver",
+   "fieldtype": "Code",
+   "label": "Conditions for update final approver"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-07-10 13:35:27.969264",
+ "modified_by": "Administrator",
+ "module": "Erpnext Dbsync",
+ "name": "Approver",
+ "owner": "mounika@elbrit.org",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
