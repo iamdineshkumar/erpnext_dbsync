@@ -101,6 +101,10 @@ class FireBaseConnect:
 
     def update_document(self, doc_id, fields, collection_name=None):
         collection_name = collection_name or self.config.get("collection_name")
+        
+        if collection_name is None:
+            collection_name = self.config.get("collection_name")
+
         self.get_db().collection(collection_name).document(doc_id).update(fields)
 
     def download_file(self, local_destination_path, remote_blob_name, m_type):
