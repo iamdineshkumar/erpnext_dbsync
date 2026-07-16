@@ -1,7 +1,7 @@
 function open_dm_dialog(fetch_method, action_method, action_type) {
     let all_data = [];
-    const dialog_title = action_type === "approve" ? __("Migration Manager") : __("Execute Migration");
-    const primary_label = action_type === "approve" ? __("Submit for Migration") : __("Execute");
+    const dialog_title = action_type === "approve" ? __("Migration Manager") : __("Pull Migration");
+    const primary_label = action_type === "approve" ? __("Submit for Migration") : __("Pull");
     const d = new frappe.ui.Dialog({
         title: dialog_title,
         size: "extra-large",
@@ -75,9 +75,10 @@ function open_dm_dialog(fetch_method, action_method, action_type) {
                             const files = r.message?.files || args.files;
                             frappe.confirm(
                                 `
-                                <b>The following files will be migrated:</b><br><br>
-                                ${files.map(f => `• ${f.id} (${f.type})`).join("<br>")}
-                                <br><br>
+                                <b>The following files will be migrated:</b>
+
+                                ${files.map(f => `• ${f.id} (${f.type})`).join("")}
+
                                 <b>Do you want to continue?</b>
                                 `,
                                 () => {
@@ -193,16 +194,17 @@ function open_dm_dialog(fetch_method, action_method, action_type) {
         callback(r) {
             if (!r.message) return;
             all_data = r.message.map(row => ({
-                _source: row._source,
-                comment: row.comment,
-                committed_by: row.committed_by,
-                deploy_on: row.deploy_on,
-                deploy_status: row.deploy_status,
-                doc_type: row.doctype_name,
-                type: row.type,
-                _importedAt: row._importedAt,
-                id: row.id
-            }));
+                    _source: row._source,
+                    comment: row.comment,
+                    committed_by: row.committed_by,
+                    deploy_on: row.deploy_on,
+                    deploy_status: row.deploy_status,
+                    doc_type: row.doctype_name,
+                    type: row.type,
+                    _importedAt: row._importedAt,
+                    id: row.id
+                }))
+                .sort((a, b) => new Date(b._importedAt) - new Date(a._importedAt));
             refresh_table();
         }
     });
@@ -222,7 +224,7 @@ frappe.listview_settings["Data Migration"] = {
         frappe.db.get_single_value("Data Migration Settings", "enable_migration_downloader")
             .then(enabled => {
                 if (enabled) {
-                    listview.page.add_inner_button(__("Execute Migration"), () => {
+                    listview.page.add_inner_button(__("Pull Migration"), () => {
                         open_dm_dialog("erpnext_dbsync.api.get_deploy_documents","erpnext_dbsync.api.start_migration","release");
                     });
                     listview.page.btn_primary.hide();

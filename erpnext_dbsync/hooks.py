@@ -15,6 +15,8 @@ doc_events = {
         "after_insert": "erpnext_dbsync.utils.doctype_sync.capture_new_doctype",
         "on_update": "erpnext_dbsync.utils.doctype_sync.capture_doctype_fields",
     },
+}
+
     
     # "Custom Field": {
     #     "after_insert": "erpnext_dbsync.utils.doctype_sync.capture_new_custom_field",
@@ -26,7 +28,6 @@ doc_events = {
     #     "before_insert": "erpnext_dbsync.utils.doctype_sync.create_property_setter_field",
          
     #  }
-}
 
 MIGRATELOG_DOCTYPE_NAME = "Migrate Logs"
 
@@ -97,9 +98,10 @@ SYSTEM_FIELDS = {
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
 
-# app_include_js =[ "/assets/erpnext_dbsync/js/data_migration.js",
-#                  "/assets/erpnext_dbsync/js/new_doctype_migration.js",
-#                  ]
+app_include_js =[ "/assets/erpnext_dbsync/js/data_migration.js",
+                 "/assets/erpnext_dbsync/js/new_doctype_migration.js",
+                #  "/assets/erpnext_dbsync/js/VueDialogSearchTable.js"
+                 ]
 
 def custom_patch():
     from frappe.modules import utils
