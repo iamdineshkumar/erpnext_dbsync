@@ -118,8 +118,7 @@ def generate_files_and_sync(doc):
                 remove_doctype = remove_doctype.split(",")
                 for doctype in remove_doctype:
                     files_paths.extend(get_deleted_doctype_path(doctype))
-            print("============================")
-            print(files_paths)
+
             if files_paths:
                 _git(branch=branch, commit_msg=commit_msg, on_queue=on_queue, Files=files_paths)
             
@@ -203,14 +202,13 @@ def execute_doctype_data_migration(doctype_name, app):
         
         scrubbed_filename = frappe.scrub(file_name.replace(".json", "")) + ".json"
         firebase_filename = f"{timestamp}_{scrubbed_filename}"
-
+        
         try:
-            FireBaseConnect.upload_file(
+            FireBaseConnect().upload_file(
                 local_file_path=local_file_path,
                 doctype=fixture_dt,
                 comment=f"Data migration for {fixture_dt}", 
                 remote_blob_name=firebase_filename,
-                file_root="DataMigration",
                 migration_type="Data Migration"
             )
         except Exception as firebase_err:

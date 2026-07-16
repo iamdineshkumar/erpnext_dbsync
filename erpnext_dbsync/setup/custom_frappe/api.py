@@ -135,11 +135,11 @@ def custom_export_customizations(
         timestamp = datetime.now().strftime("%Y_%m_%d_%H%M%S")
         firebase_filename = f"{timestamp}_{scrub(doctype)}.json"
 
-        FireBaseConnect.upload_file(
+        FireBaseConnect().upload_file(
             local_file_path=path,
             doctype=doctype,
             comment=comment,
-            remote_blob_name=f"{firebase_filename}"
+            remote_blob_name=f"{firebase_filename}",
         )
 
         return

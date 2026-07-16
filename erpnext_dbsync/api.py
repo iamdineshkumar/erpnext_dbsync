@@ -38,7 +38,7 @@ def execute_sync_migration():
 @frappe.whitelist()
 def get_all_documents():
     try:
-        documents = FireBaseConnect.get_all_documents()
+        documents = FireBaseConnect().get_all_documents()
         print("Documents retrieved from Firestore:", documents)
         return documents
 
@@ -56,7 +56,7 @@ def approve_document(approve_data):
             doc_id = doc.get("doc_id")
             fields = doc.get("fields")
             
-            FireBaseConnect.update_document("migrations", doc_id, fields)
+            FireBaseConnect().update_document(doc_id, fields)
             
         return {"status": "success", "message": "Document approved."}
     
@@ -67,7 +67,7 @@ def approve_document(approve_data):
 @frappe.whitelist()
 def get_deploy_documents():
     try:
-        documents = FireBaseConnect.get_deploy_file()
+        documents = FireBaseConnect().get_deploy_file()
         return documents
 
     except Exception as e:
@@ -109,10 +109,10 @@ def start_migration(files):
             else:
                 local_file_path = os.path.join(fixtures_dir, clean_file_name)
             
-            all_pending_docs = FireBaseConnect.download_file(
+            all_pending_docs = FireBaseConnect().download_file(
                 local_destination_path=local_file_path, 
                 remote_blob_name=original_file_id, 
-                file_root=("Test" if migration_type == "Field Migration" else "DataMigration")
+                m_type=migration_type
             )
             
         return {"status": "done"}
@@ -141,7 +141,7 @@ def execute_migration(files):
                 "deploy_on":datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                 "deploy_status":"Complete"
             } 
-            FireBaseConnect.update_document("migrations", doc_id, fields)
+            FireBaseConnect.update_document(doc_id, fields)
 
             
         return {

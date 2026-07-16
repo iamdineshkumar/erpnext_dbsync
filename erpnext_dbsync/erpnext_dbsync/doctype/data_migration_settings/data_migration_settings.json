@@ -17,6 +17,11 @@
   "user_name",
   "password",
   "enable_firebase_version_control",
+  "fire_base_db_name",
+  "fire_base_storage_bucket",
+  "collection_name",
+  "field_migration_storage_name",
+  "data_migration_storage_name",
   "enable_migration_uploader",
   "enable_migration_downloader",
   "section_break_bnpm",
@@ -117,13 +122,43 @@
    "fieldname": "is_public_repo",
    "fieldtype": "Check",
    "label": "Is Public Repo"
+  },
+  {
+   "depends_on": "enable_firebase_version_control",
+   "fieldname": "collection_name",
+   "fieldtype": "Data",
+   "label": "Migration Firebase Collection Name"
+  },
+  {
+   "depends_on": "enable_firebase_version_control",
+   "fieldname": "field_migration_storage_name",
+   "fieldtype": "Data",
+   "label": "Field Migration Storage Name"
+  },
+  {
+   "depends_on": "enable_firebase_version_control",
+   "fieldname": "data_migration_storage_name",
+   "fieldtype": "Data",
+   "label": "Data Migration Storage Name"
+  },
+  {
+   "depends_on": "enable_firebase_version_control",
+   "fieldname": "fire_base_db_name",
+   "fieldtype": "Data",
+   "label": "Fire Base DB Name"
+  },
+  {
+   "depends_on": "enable_firebase_version_control",
+   "fieldname": "fire_base_storage_bucket",
+   "fieldtype": "Data",
+   "label": "Fire Base Storage Bucket"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2026-07-10 10:32:45.480213",
+ "modified": "2026-07-16 15:26:35.038684",
  "modified_by": "Administrator",
  "module": "Erpnext Dbsync",
  "name": "Data Migration Settings",
