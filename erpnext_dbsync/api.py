@@ -141,7 +141,7 @@ def execute_migration(files):
                 "deploy_on":datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                 "deploy_status":"Complete"
             } 
-            FireBaseConnect.update_document(doc_id, fields)
+            FireBaseConnect().update_document(doc_id, fields)
 
             
         return {
